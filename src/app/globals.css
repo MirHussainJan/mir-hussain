@@ -24,3 +24,20 @@ body {
     }
   }
 }
+
+.icon{
+  transition: all 0.2s ease-in-out;
+  scale: 1;
+}
+
+.Card:hover .icon {
+  scale: 1.02;
+}
+
+.card-main {
+  transition: all 0.2s ease-in-out;
+}
+
+.Card:hover .card-main{
+  padding-left: 15px;
+}

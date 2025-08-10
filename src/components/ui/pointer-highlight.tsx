@@ -50,7 +50,7 @@ export function PointerHighlight({
       {/* Text content with conditional styling */}
       <motion.div
         className={cn(
-          "relative z-10 text-4xl font-bold transition-colors duration-300 py-3 px-4",
+          "relative z-10 text-2xl md:text-4xl font-bold transition-colors duration-300 py-3 px-4",
           isAnimating ? "text-white" : "text-neutral-900"
         )}
       >
@@ -89,8 +89,8 @@ export function PointerHighlight({
             initial={{ opacity: 0 }}
             whileInView={{
               opacity: 1,
-              x: dimensions.width + 4,
-              y: dimensions.height + 4,
+              x: dimensions.width,
+              y: dimensions.height,
             }}
             style={{
               rotate: -90,
@@ -102,7 +102,7 @@ export function PointerHighlight({
             }}
           >
             <Pointer
-              className={cn("h-5 w-5 text-blue-500", pointerClassName)}
+              className={cn("h-5 w-5 text-neutral-900/85", pointerClassName)}
             />
           </motion.div>
         </motion.div>

@@ -159,7 +159,7 @@ const servicesData: Service[] = [
 // Main ServicesCards Component
 const ServicesCards: React.FC = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 py-8 px-18 justify-center">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 py-8 md:justify-between justify-center">
       {servicesData.map((service) => (
         <Card
           key={service.id}

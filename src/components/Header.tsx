@@ -17,12 +17,11 @@ const Header = () => {
 
   return (
     <header className="w-full self-start bg-white border border-gray-200 fixed top-0 z-50">
-      <div className="mx-auto px-4 sm:px-6 lg:px-18">
+      <div className="mx-auto px-4 md:px-0 max-w-[1440px]">
         <div className="flex items-center justify-between h-16">
-          
           {/* Left Section - Logo/Name */}
           <div className="flex items-center">
-            <h1 className="text-xl font-semibold text-gradient">
+            <h1 className="text-xl font-semibold">
               Mir Hussain
             </h1>
           </div>
@@ -36,7 +35,7 @@ const Header = () => {
               <span className="text-sm text-gray-700">mirhussainjan10387@gmail.com</span>
               <button
                 onClick={() => copyToClipboard('mirhussainjan10387@gmail.com')}
-                className={`p-1.5 rounded-full transition-colors ${
+                className={`p-2 rounded-full transition-colors ${
                   copySuccess 
                     ? 'bg-green-100 text-green-600' 
                     : 'hover:bg-gray-200 text-gray-500'

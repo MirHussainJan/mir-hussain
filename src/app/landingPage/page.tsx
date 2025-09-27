@@ -1,18 +1,21 @@
 import { AnimatedTooltipPreview } from "@/components/AnimatedTooltipDemo";
 import ExperienceSection from "@/components/Experience";
 import Header from "@/components/Header";
+import { InfiniteMovingCardsDemo } from "@/components/infinite-testimonials";
 import { TechStackDemo } from "@/components/InfiniteMovingCards";
 import ServicesCards from "@/components/ServicesCards";
 import { Cover } from "@/components/ui/cover";
 import { PointerHighlight } from "@/components/ui/pointer-highlight";
+import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import { TextRevealCard } from "@/components/ui/text-reveal-card";
+import { SparklesPreview } from "@/components/ui/under-sparkles";
 
 export default function LandingPage() {
   return (
     <>
       <div className="min-h-screen relative flex flex-col items-center justify-center w-full">
         <Header />
-        <div className="w-full justify-self-center">
+        <div className="w-full justify-self-center ">
           {/* Header with greeting, profile pic, and name */}
           <div className="flex flex-row items-center gap-2 sm:gap-4 mb-6 w-full justify-center">
             <h1 className="text-8xl md:text-9xl font-bold text-gradient">
@@ -52,7 +55,7 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-      <div className="below-section mb-20">
+      <div className="below-section mb-20 max-w-[1440px] mx-auto px-4 lg:px-0">
         <h1 className="text-4xl md:text-6xl font-bold text-center flex items-center justify-center gap-2 flex-wrap">
           <span className="text-gradient pb-[2px]">Turning ideas</span>
           <Cover>rapidly</Cover>
@@ -60,11 +63,26 @@ export default function LandingPage() {
         </h1>
         <ServicesCards />
       </div>
-      <div className="below-section mb-20">
-        <h1 className="text-4xl mb-10 md:text-6xl font-bold text-center text-gradient">
-          Worked at reputed firms
-        </h1>
-        <ExperienceSection/>
+      <div className="below-section mb-20 max-w-[1440px] mx-auto px-4 lg:px-0">
+        <SparklesPreview text="Worked at reputed firms" />
+        <ExperienceSection />
+        {/* Fixed alignment for "Worked at reputed firms" with proper spacing */}
+        {/* <div className="text-4xl mb-10 md:text-6xl font-bold text-center flex items-center justify-center flex-wrap gap-1 md:gap-2">
+          <span className="text-gradient mr-1 md:mr-2 mb-1 md:mb-2">
+            Worked at
+          </span>
+          <TextHoverEffect text="reputed" className="text-4xl md:text-6xl" />
+          <span className="text-gradient mb-1 md:mb-2">firms</span>
+        </div>
+        <ExperienceSection />*/}
+      </div>
+      <div className="below-section mb-10 ">
+        <div className="flex items-center justify-center text-4xl md:text-6xl font-bold gap-2 mb-5">
+          <span className="text-gradient mb-1 md:mb-2">People</span>
+          <TextHoverEffect text="love" className="text-4xl md:text-6xl" />
+          <span className="text-gradient mb-1 md:mb-2">my work</span>
+        </div>
+        <InfiniteMovingCardsDemo />
       </div>
     </>
   );

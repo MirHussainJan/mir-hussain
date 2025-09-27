@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   IconBrandReact,
   IconBrandTypescript,
@@ -13,8 +13,8 @@ import {
   IconBrandNextjs,
   IconBrandTailwind,
   IconBrandVite,
-} from '@tabler/icons-react';
-import { TechnologyBubble } from './ui/Cards';
+} from "@tabler/icons-react";
+import { TechnologyBubble } from "./ui/Cards";
 
 interface Technology {
   name: string;
@@ -35,16 +35,36 @@ interface Experience {
 const experienceData: Experience[] = [
   {
     id: 1,
-    title: "Proto IT Consultants",
+    title: "Proto IT",
     role: "Associate Web Developer",
     date: "September 2024 - Present",
     desc: "Led the development of key features for Google Cloud Platform's web console while improving performance metrics by 35%.",
     technologies: [
-      { name: "TypeScript", icon: <IconBrandTypescript color="#3178C6" size={28} />, color: "#3178C6" },
-      { name: "React", icon: <IconBrandReact color="#61DAFB" size={28} />, color: "#61DAFB" },
-      { name: "Angular", icon: <IconBrandAngular color="#DD0031" size={28} />, color: "#DD0031" },
-      { name: "Node.js", icon: <IconBrandNodejs color="#339933" size={28} />, color: "#339933" },
-      { name: "Docker", icon: <IconBrandDocker color="#2496ED" size={28} />, color: "#2496ED" },
+      {
+        name: "TypeScript",
+        icon: <IconBrandTypescript color="#3178C6" size={28} />,
+        color: "#3178C6",
+      },
+      {
+        name: "React",
+        icon: <IconBrandReact color="#61DAFB" size={28} />,
+        color: "#61DAFB",
+      },
+      {
+        name: "Angular",
+        icon: <IconBrandAngular color="#DD0031" size={28} />,
+        color: "#DD0031",
+      },
+      {
+        name: "Node.js",
+        icon: <IconBrandNodejs color="#339933" size={28} />,
+        color: "#339933",
+      },
+      {
+        name: "Docker",
+        icon: <IconBrandDocker color="#2496ED" size={28} />,
+        color: "#2496ED",
+      },
     ],
     logo: "/ProtoIt.png",
   },
@@ -55,12 +75,36 @@ const experienceData: Experience[] = [
     date: "July 2025 - Present",
     desc: "Worked as a freelance developer on fiverr, collaborating with senior developers to deliver high-quality software solutions.",
     technologies: [
-      { name: "JavaScript", icon: <IconBrandJavascript color="#F7DF1E" size={28} />, color: "#F7DF1E" },
-      { name: "HTML5", icon: <IconBrandHtml5 color="#E34F26" size={28} />, color: "#E34F26" },
-      { name: "CSS3", icon: <IconBrandCss3 color="#1572B6" size={28} />, color: "#1572B6" },
-      { name: "Next.js", icon: <IconBrandNextjs color="#000000" size={28} />, color: "#000000" },
-      { name: "Tailwind CSS", icon: <IconBrandTailwind color="#06B6D4" size={28} />, color: "#06B6D4" },
-      { name: "Vite", icon: <IconBrandVite color="#646CFF" size={28} />, color: "#646CFF" },
+      {
+        name: "JavaScript",
+        icon: <IconBrandJavascript color="#F7DF1E" size={28} />,
+        color: "#F7DF1E",
+      },
+      {
+        name: "HTML5",
+        icon: <IconBrandHtml5 color="#E34F26" size={28} />,
+        color: "#E34F26",
+      },
+      {
+        name: "CSS3",
+        icon: <IconBrandCss3 color="#1572B6" size={28} />,
+        color: "#1572B6",
+      },
+      {
+        name: "Next.js",
+        icon: <IconBrandNextjs color="#000000" size={28} />,
+        color: "#000000",
+      },
+      {
+        name: "Tailwind CSS",
+        icon: <IconBrandTailwind color="#06B6D4" size={28} />,
+        color: "#06B6D4",
+      },
+      {
+        name: "Vite",
+        icon: <IconBrandVite color="#646CFF" size={28} />,
+        color: "#646CFF",
+      },
     ],
     logo: "/fiverr.png",
   },
@@ -71,11 +115,31 @@ const experienceData: Experience[] = [
     date: "August 2024 - November 2024",
     desc: "Worked on the Microsoft Teams web application, implementing real-time collaboration features and UI components.",
     technologies: [
-      { name: "JavaScript", icon: <IconBrandJavascript color="#F7DF1E" size={28} />, color: "#F7DF1E" },
-      { name: "TypeScript", icon: <IconBrandTypescript color="#3178C6" size={28} />, color: "#3178C6" },
-      { name: "React", icon: <IconBrandReact color="#61DAFB" size={28} />, color: "#61DAFB" },
-      { name: "Node.js", icon: <IconBrandNodejs color="#339933" size={28} />, color: "#339933" },
-      { name: "Git", icon: <IconBrandGit color="#F05032" size={28} />, color: "#F05032" },
+      {
+        name: "JavaScript",
+        icon: <IconBrandJavascript color="#F7DF1E" size={28} />,
+        color: "#F7DF1E",
+      },
+      {
+        name: "TypeScript",
+        icon: <IconBrandTypescript color="#3178C6" size={28} />,
+        color: "#3178C6",
+      },
+      {
+        name: "React",
+        icon: <IconBrandReact color="#61DAFB" size={28} />,
+        color: "#61DAFB",
+      },
+      {
+        name: "Node.js",
+        icon: <IconBrandNodejs color="#339933" size={28} />,
+        color: "#339933",
+      },
+      {
+        name: "Git",
+        icon: <IconBrandGit color="#F05032" size={28} />,
+        color: "#F05032",
+      },
     ],
     logo: "/ezitech.png",
   },
@@ -86,8 +150,16 @@ const experienceData: Experience[] = [
     date: "June 2023 - July 2023",
     desc: "Developed and maintained core components of Airbnb's booking platform.",
     technologies: [
-      { name: "Python", icon: <IconBrandPython color="#61DAFB" size={28} />, color: "#61DAFB" },
-      { name: "Git", icon: <IconBrandGit color="#F05032" size={28} />, color: "#F05032" },
+      {
+        name: "Python",
+        icon: <IconBrandPython className="text-blue-700" size={28} />,
+        color: "#61DAFB",
+      },
+      {
+        name: "Git",
+        icon: <IconBrandGit color="#F05032" size={28} />,
+        color: "#F05032",
+      },
     ],
     logo: "/nastp.png",
   },
@@ -95,28 +167,27 @@ const experienceData: Experience[] = [
 
 const ExperienceSection: React.FC = () => {
   return (
-    <section className="px-4 sm:px-8 md:px-16">
+    <section className="px-4 md:px-0">
       <div className="mx-auto space-y-16">
         {experienceData.map((experience) => (
           <div key={experience.id}>
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-              
+            <div className="flex flex-col md:flex-row items-start justify-between gap-3">
               {/* Left Side - Text Content */}
               <div className="flex-grow order-2 md:order-1 w-full">
-                <div className="flex flex-wrap items-center gap-4 mb-1">
-                  <h4 className="text-4xl text-gradient">
-                    {experience.title}
+                <h4 className="text-3xl font-bold text-gradient mb-2 tracking-wide">
+                  {experience.title}
+                </h4>
+
+                <div className="flex flex-wrap items-center gap-4 mb-2">
+                  <h4 className="text-xl font-bold">
+                    {experience.role}
                   </h4>
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-gray-700">
                     {experience.date}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-neutral-900 mb-2">
-                  {experience.role}
-                </h3>
-
-                <p className="mb-2 text-neutral-900 leading-relaxed max-w-3xl">
+                <p className="mb-2 text-gray-700 font-extralight leading-relaxed max-w-2xl">
                   {experience.desc}
                 </p>
 
@@ -131,7 +202,7 @@ const ExperienceSection: React.FC = () => {
                 <img
                   src={experience.logo}
                   alt={`${experience.title} logo`}
-                  className="w-20 sm:w-38 md:w-42 object-contain"
+                  className="w-28 md:w-42 object-contain"
                 />
               </div>
             </div>

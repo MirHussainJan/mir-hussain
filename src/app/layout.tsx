@@ -1,22 +1,37 @@
-import type { Metadata } from "next";
+"use client";
 import "./globals.css";
 import { FloatingDockDemo } from "@/components/FloatingDockDemo";
 import Footer from "@/components/Footer";
 import AnimatedCursor from "react-animated-cursor";
-
-export const metadata: Metadata = {
-  title: "Mir Hussain",
-  description:
-    "Full Stack Developer specializing in building modern web applications with clean design and robust functionality.",
-};
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import Loader from "@/components/Loader";
+import Head from "next/head";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    const timeout = setTimeout(() => setLoading(false), 600); // Adjust duration as needed
+    return () => clearTimeout(timeout);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.title = "Mir Hussain";
+  }, []);
+
   return (
     <html lang="en">
+      <Head>
+        <title>Mir Hussain</title>
+        <meta name="description" content="Full Stack Developer specializing in building modern web applications with clean design and robust functionality." />
+      </Head>
       <body>
         <AnimatedCursor
           innerSize={10}
@@ -52,9 +67,10 @@ export default function RootLayout({
             ".cursor-pointer",
           ]}
         />
+        {loading && <Loader />}
         {children}
-        <FloatingDockDemo />
         <Footer />
+        <FloatingDockDemo />
       </body>
     </html>
   );

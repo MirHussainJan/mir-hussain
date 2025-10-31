@@ -22,15 +22,25 @@ export const FloatingDock = ({
   items,
   desktopClassName,
   mobileClassName,
+  onLinkClick,
 }: {
   items: { title: string; icon: React.ReactNode; href: string }[];
   desktopClassName?: string;
   mobileClassName?: string;
+  onLinkClick?: (href: string) => void;
 }) => {
   return (
     <>
-      {/* Only show desktop version on all screens */}
-      <FloatingDockDesktop items={items} className={desktopClassName} />
+      <FloatingDockDesktop
+        items={items}
+        className={desktopClassName}
+        onLinkClick={onLinkClick}
+      />
+      <FloatingDockMobile
+        items={items}
+        className={mobileClassName}
+        onLinkClick={onLinkClick}
+      />
     </>
   );
 };
@@ -38,64 +48,27 @@ export const FloatingDock = ({
 const FloatingDockMobile = ({
   items,
   className,
+  onLinkClick,
 }: {
   items: { title: string; icon: React.ReactNode; href: string }[];
   className?: string;
+  onLinkClick?: (href: string) => void;
 }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className={cn("relative block md:hidden", className)}>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            layoutId="nav"
-            className="absolute inset-x-0 bottom-full mb-2 flex flex-col gap-2"
-          >
-            {items.map((item, idx) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                exit={{
-                  opacity: 0,
-                  y: 10,
-                  transition: {
-                    delay: idx * 0.05,
-                  },
-                }}
-                transition={{ delay: (items.length - 1 - idx) * 0.05 }}
-              >
-                <Link
-                  href={item.href}
-                  key={item.title}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
-                >
-                  <div className="h-4 w-4">{item.icon}</div>
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <button
-        onClick={() => setOpen(!open)}
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-800"
-      >
-        <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
-      </button>
-    </div>
+    <>
+    </>
   );
 };
 
 const FloatingDockDesktop = ({
   items,
   className,
+  onLinkClick,
 }: {
   items: { title: string; icon: React.ReactNode; href: string }[];
   className?: string;
+  onLinkClick?: (href: string) => void;
 }) => {
   let mouseX = useMotionValue(Infinity);
   return (
@@ -108,7 +81,7 @@ const FloatingDockDesktop = ({
       )}
     >
       {items.map((item) => (
-        <IconContainer mouseX={mouseX} key={item.title} {...item} />
+        <IconContainer key={item.title} mouseX={mouseX} {...item} onLinkClick={onLinkClick} />
       ))}
     </motion.div>
   );
@@ -119,11 +92,13 @@ function IconContainer({
   title,
   icon,
   href,
+  onLinkClick,
 }: {
   mouseX: MotionValue;
   title: string;
   icon: React.ReactNode;
   href: string;
+  onLinkClick?: (href: string) => void;
 }) {
   let ref = useRef<HTMLDivElement>(null);
 
@@ -168,7 +143,10 @@ function IconContainer({
   const [hovered, setHovered] = useState(false);
 
   return (
-  <Link href={href}>
+    <Link
+      href={href}
+      onClick={() => onLinkClick?.(href)}
+    >
       <motion.div
         ref={ref}
         style={{ width, height }}
@@ -195,6 +173,6 @@ function IconContainer({
           {icon}
         </motion.div>
       </motion.div>
-  </Link>
+    </Link>
   );
 }

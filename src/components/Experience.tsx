@@ -167,10 +167,19 @@ const experienceData: Experience[] = [
 
 const ExperienceSection: React.FC = () => {
   return (
-    <section className="px-4 md:px-0">
+    <section className="p-8 bg-neutral-100 relative shadow-md">
+      <div className="dots absolute bg-neutral-200 w-6 h-6 rounded-full top-[-12] left-[-12]"></div>
+      <div className="dots absolute bg-neutral-200 w-6 h-6 rounded-full top-[-12] right-[-12]"></div>
+      <div className="dots absolute bg-neutral-200 w-6 h-6 rounded-full left-[-12] bottom-[-12]"></div>
+      <div className="dots absolute bg-neutral-200 w-6 h-6 rounded-full right-[-12] bottom-[-12]"></div>
       <div className="mx-auto space-y-16">
-        {experienceData.map((experience) => (
-          <div key={experience.id}>
+        {experienceData.map((experience, idx) => (
+          <div
+            key={experience.id}
+            className={
+              idx % 2 === 0 ? "reveal-left-on-view" : "reveal-right-on-view"
+            }
+          >
             <div className="flex flex-col md:flex-row items-start justify-between gap-3">
               {/* Left Side - Text Content */}
               <div className="flex-grow order-2 md:order-1 w-full">
@@ -179,9 +188,7 @@ const ExperienceSection: React.FC = () => {
                 </h4>
 
                 <div className="flex flex-wrap items-center gap-4 mb-2">
-                  <h4 className="text-xl font-bold">
-                    {experience.role}
-                  </h4>
+                  <h4 className="text-xl font-bold">{experience.role}</h4>
                   <span className="text-sm text-gray-700">
                     {experience.date}
                   </span>

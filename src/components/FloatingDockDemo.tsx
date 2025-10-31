@@ -7,7 +7,7 @@ import {
   IconUserCircle,
 } from "@tabler/icons-react";
 
-export function FloatingDockDemo() {
+export function FloatingDockDemo({ onLinkClick }: { onLinkClick?: (href: string) => void }) {
   const links = [
     {
       title: "Home",
@@ -42,6 +42,7 @@ export function FloatingDockDemo() {
     <div className="flex items-center z-[90] justify-center w-full fixed bottom-5">
       <FloatingDock
         items={links}
+        onLinkClick={onLinkClick}
       />
     </div>
   );

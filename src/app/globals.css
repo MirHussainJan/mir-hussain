@@ -41,3 +41,102 @@ body {
 .Card:hover .card-main{
   padding-left: 15px;
 }
+
+/* Slide-up with slight scale */
+@keyframes fade-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Alternate left/right slide-in for cards */
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-36px) scale(0.98);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(36px) scale(0.98);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Generic block reveal */
+.reveal-on-view {
+  animation-name: fade-slide-up;
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(.22,.61,.36,1);
+  animation-fill-mode: both;
+  animation-timeline: view();
+  animation-range: entry 15% cover 30%;
+  will-change: transform, opacity, filter;
+}
+
+/* Stagger children on view */
+.reveal-children-on-view > * {
+  animation-name: fade-slide-up;
+  animation-duration: 0.6s;
+  animation-timing-function: cubic-bezier(.22,.61,.36,1);
+  animation-fill-mode: both;
+  animation-timeline: view();
+  animation-range: entry 15% cover 30%;
+  will-change: transform, opacity, filter;
+}
+.reveal-children-on-view > *:nth-child(1) { animation-delay: 0ms; }
+.reveal-children-on-view > *:nth-child(2) { animation-delay: 70ms; }
+.reveal-children-on-view > *:nth-child(3) { animation-delay: 140ms; }
+.reveal-children-on-view > *:nth-child(4) { animation-delay: 210ms; }
+.reveal-children-on-view > *:nth-child(5) { animation-delay: 280ms; }
+.reveal-children-on-view > *:nth-child(6) { animation-delay: 350ms; }
+
+/* Alternating reveal helpers */
+.reveal-left-on-view {
+  animation-name: slide-in-left;
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(.22,.61,.36,1);
+  animation-fill-mode: both;
+  animation-timeline: view();
+  animation-range: entry 15% cover 30%;
+  will-change: transform, opacity, filter;
+}
+.reveal-right-on-view {
+  animation-name: slide-in-right;
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(.22,.61,.36,1);
+  animation-fill-mode: both;
+  animation-timeline: view();
+  animation-range: entry 15% cover 30%;
+  will-change: transform, opacity, filter;
+}
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-view,
+  .reveal-children-on-view > *,
+  .reveal-left-on-view,
+  .reveal-right-on-view {
+    animation: none !important;
+  }
+}

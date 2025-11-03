@@ -7,6 +7,7 @@ import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Loader from "@/components/Loader";
 import Head from "next/head";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default function RootLayout({
   children,
@@ -78,6 +79,7 @@ export default function RootLayout({
         />
       </Head>
       <body>
+        <SpeedInsights />
         <AnimatedCursor
           innerSize={10}
           outerSize={20}

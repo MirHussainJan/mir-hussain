@@ -17,6 +17,7 @@ export function PointerHighlight({
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
     if (containerRef.current) {
@@ -38,6 +39,25 @@ export function PointerHighlight({
     return () => {
       if (containerRef.current) {
         resizeObserver.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
       }
     };
   }, []);
@@ -73,10 +93,14 @@ export function PointerHighlight({
               width: 0,
               height: 0,
             }}
-            whileInView={{
-              width: dimensions.width,
-              height: dimensions.height,
-            }}
+            animate={
+              isInView
+                ? {
+                    width: dimensions.width,
+                    height: dimensions.height,
+                  }
+                : {}
+            }
             onAnimationStart={() => setIsAnimating(true)}
             onAnimationComplete={() => setIsAnimating(true)}
             transition={{
@@ -87,11 +111,15 @@ export function PointerHighlight({
           <motion.div
             className="pointer-events-none absolute"
             initial={{ opacity: 0 }}
-            whileInView={{
-              opacity: 1,
-              x: dimensions.width,
-              y: dimensions.height,
-            }}
+            animate={
+              isInView
+                ? {
+                    opacity: 1,
+                    x: dimensions.width,
+                    y: dimensions.height,
+                  }
+                : {}
+            }
             style={{
               rotate: -90,
             }}

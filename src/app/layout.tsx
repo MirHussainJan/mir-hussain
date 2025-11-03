@@ -3,7 +3,7 @@ import "./globals.css";
 import { FloatingDockDemo } from "@/components/FloatingDockDemo";
 import Footer from "@/components/Footer";
 import AnimatedCursor from "react-animated-cursor";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Loader from "@/components/Loader";
 import Head from "next/head";
@@ -15,22 +15,67 @@ export default function RootLayout({
 }>) {
   const pathname = usePathname();
   const [loading, setLoading] = useState(false);
+  const previousPathnameRef = useRef(pathname);
 
   useEffect(() => {
-    setLoading(true);
-    const timeout = setTimeout(() => setLoading(false), 600); // Adjust duration as needed
-    return () => clearTimeout(timeout);
+    // Only hide loader if pathname actually changed
+    if (previousPathnameRef.current !== pathname) {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setLoading(false);
+          previousPathnameRef.current = pathname;
+        });
+      });
+    }
   }, [pathname]);
 
   useEffect(() => {
     document.title = "Mir Hussain";
+
+    // Intercept all link clicks to show loader immediately
+    const handleLinkClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const link = target.closest("a");
+
+      if (
+        link &&
+        link.href &&
+        !link.target &&
+        link.href.startsWith(window.location.origin)
+      ) {
+        const linkUrl = new URL(link.href);
+        const currentPath = window.location.pathname;
+
+        // Only show loader if navigating to a different route
+        if (linkUrl.pathname !== currentPath) {
+          setLoading(true);
+        }
+      }
+    };
+
+    document.addEventListener("click", handleLinkClick);
+    return () => document.removeEventListener("click", handleLinkClick);
   }, []);
+
+  const handleDockLinkClick = (href: string) => {
+    // Normalize href to pathname
+    const linkUrl = new URL(href, window.location.origin);
+    const currentPath = window.location.pathname;
+
+    // Only show loader if navigating to a different route
+    if (linkUrl.pathname !== currentPath) {
+      setLoading(true);
+    }
+  };
 
   return (
     <html lang="en">
       <Head>
         <title>Mir Hussain</title>
-        <meta name="description" content="Full Stack Developer specializing in building modern web applications with clean design and robust functionality." />
+        <meta
+          name="description"
+          content="Full Stack Developer specializing in building modern web applications with clean design and robust functionality."
+        />
       </Head>
       <body>
         <AnimatedCursor
@@ -70,7 +115,7 @@ export default function RootLayout({
         {loading && <Loader />}
         {children}
         <Footer />
-        <FloatingDockDemo />
+        <FloatingDockDemo onLinkClick={handleDockLinkClick} />
       </body>
     </html>
   );

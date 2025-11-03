@@ -29,25 +29,25 @@ export function DraggableCardDemo() {
       title: "Constructor & Destructor",
       image:
         "https://i.ytimg.com/vi/xVlvnAW9aNc/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLCBXIyVIqxu_TtDmETCfbk5WAyQfg",
-      className: "absolute top-32 left-[55%] rotate-[10deg]",
+      className: "absolute bottom-32 left-[45%] rotate-[10deg]",
     },
     {
       title: "Access Specifiers",
       image:
         "https://i.ytimg.com/vi/CAOhTJVOnSc/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLDGyQghSrgrOYfTbLpuDaVIrd1bfQ",
-      className: "absolute top-20 right-[35%] rotate-[2deg]",
+      className: "absolute top-20 right-[25%] rotate-[2deg]",
     },
     {
       title: "Constructor Overloading",
       image:
         "https://i.ytimg.com/vi/4vCLwl4Mivw/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLBOVGvJmv2f7sIVnAGfV7iCTMSmbA",
-      className: "absolute top-24 left-[45%] rotate-[-7deg]",
+      className: "absolute top-42 left-[45%] rotate-[-7deg]",
     },
     {
       title: "Reading from file",
       image:
         "https://i.ytimg.com/vi/n0CO_LqNE1A/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&amp;rs=AOn4CLAdBO7B4RHXEt_bAwJTdM7gzcwZEg",
-      className: "absolute top-8 left-[30%] rotate-[4deg]",
+      className: "absolute bottom-50 left-[30%] rotate-[4deg]",
     },
   ];
   return (

@@ -1,6 +1,9 @@
 import React from "react";
 import Header from "@/components/Header";
 import { DraggableCardDemo } from "@/components/DraggableCards";
+import { SparklesPreview } from "@/components/ui/under-sparkles";
+import ExperienceSection from "@/components/Experience";
+import Timeline from "@/components/Timeline";
 
 export default function AboutPage() {
   return (
@@ -17,12 +20,38 @@ export default function AboutPage() {
           and creative solutions.
         </p>
       </main>
-      <main className="flex flex-col justify-center border-t border-gray-200 pt-10">
+      <main className="flex flex-col justify-center border-t border-gray-200 pt-20">
         <h1 className="text-4xl mb-4 text-center text-gradient md:text-6xl font-bold">
           Sharing knowledge as I learn
         </h1>
         <DraggableCardDemo />
       </main>
+      <div className="below-section mb-20 max-w-[1440px] mx-auto px-4 lg:px-0 reveal-on-view">
+        <h1 className="text-4xl md:text-6xl font-bold text-center flex items-center justify-center gap-3 md:gap-3 reveal-children-on-view mb-8">
+          <span className="text-gradient">Timeline of </span>
+          {/* <ContainerTextFlip
+            className="text-white"
+            words={["reputed", "renowned", "leading", "well-known"]}
+          /> */}
+          <span className="md:px-3 px-1 py-1 text-3xl md:text-5xl bg-neutral-100 relative shadow-md">
+            achievements
+            <div className="dots absolute bg-neutral-200 w-3 h-3 md:w-4 md:h-4 rounded-full top-[-6] left-[-6]"></div>
+            <div className="dots absolute bg-neutral-200 w-3 h-3 md:w-4 md:h-4 rounded-full top-[-6] right-[-6]"></div>
+            <div className="dots absolute bg-neutral-200 w-3 h-3 md:w-4 md:h-4 rounded-full left-[-6] bottom-[-6]"></div>
+            <div className="dots absolute bg-neutral-200 w-3 h-3 md:w-4 md:h-4 rounded-full right-[-6] bottom-[-6]"></div>
+          </span>
+        </h1>
+        <Timeline />
+      </div>
+      {/* Fixed alignment for "Worked at reputed firms" with proper spacing */}
+      {/* <div className="text-4xl mb-10 md:text-6xl font-bold text-center flex items-center justify-center flex-wrap gap-1 md:gap-2">
+                <span className="text-gradient mr-1 md:mr-2 mb-1 md:mb-2">
+                  Worked at
+                </span>
+                <TextHoverEffect text="reputed" className="text-4xl md:text-6xl" />
+                <span className="text-gradient mb-1 md:mb-2">firms</span>
+              </div>
+              <ExperienceSection />*/}
     </>
   );
 }

@@ -50,7 +50,7 @@ const Header = () => {
             <a 
               href="https://drive.usercontent.google.com/u/0/uc?id=1Em897GiZEqo7WLER4vB6T66BfXZ77hq3&export=download"
               target="_blank"
-              className="hidden sm:flex items-center gap-2 px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors"
+              className="hidden sm:flex items-center gap-2 px-4 py-3 border border-neutral-900 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors"
             >
               <IconDownload className="w-4 h-4" />
               CV

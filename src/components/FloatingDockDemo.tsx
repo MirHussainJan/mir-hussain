@@ -35,7 +35,7 @@ export function FloatingDockDemo({ onLinkClick }: { onLinkClick?: (href: string)
       icon: (
         <IconMail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "/contact",
     },
   ];
   return (

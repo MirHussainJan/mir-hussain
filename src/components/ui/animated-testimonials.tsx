@@ -1,6 +1,6 @@
 "use client";
 
-import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
+import { IconArrowLeft, IconArrowRight, IconExternalLink } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "motion/react";
 
 import { useEffect, useState } from "react";
@@ -10,6 +10,7 @@ type Testimonial = {
   name: string;
   designation: string;
   src: string;
+  link: string;
 };
 export const AnimatedTestimonials = ({
   testimonials,
@@ -58,7 +59,7 @@ export const AnimatedTestimonials = ({
                     rotate: randomRotateY(),
                   }}
                   animate={{
-                    opacity: isActive(index) ? 1 : 0.7,
+                    opacity: isActive(index) ? 1 : 0.4,
                     scale: isActive(index) ? 1 : 0.95,
                     z: isActive(index) ? 0 : -100,
                     rotate: isActive(index) ? 0 : randomRotateY(),
@@ -75,17 +76,15 @@ export const AnimatedTestimonials = ({
                   }}
                   transition={{
                     duration: 0.4,
-                    ease: "easeInOut",
+                    ease: "linear",
                   }}
-                  className="absolute inset-0 origin-bottom"
+                  className="absolute inset-0 origin-bottom flex flex-col items-center justify-center"
                 >
                   <img
                     src={testimonial.src}
                     alt={testimonial.name}
-                    width={500}
-                    height={500}
                     draggable={false}
-                    className="h-full w-full rounded-3xl object-cover object-center"
+                    className="rounded-3xl object-contain overflow-hidden"
                   />
                 </motion.div>
               ))}
@@ -108,12 +107,15 @@ export const AnimatedTestimonials = ({
               opacity: 0,
             }}
             transition={{
-              duration: 0.2,
-              ease: "easeInOut",
+              duration: 0.4,
+              ease: "linear",
             }}
           >
             <h3 className="text-3xl font-bold text-gradient mb-2 tracking-wide">
-              {testimonials[active].name}
+              <a href={testimonials[active].link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-gradient">
+                {testimonials[active].name}
+                <IconExternalLink stroke={2}/>
+              </a>
             </h3>
             <p className="text-xl font-bold text-neutral-900">
               {testimonials[active].designation}
@@ -133,8 +135,8 @@ export const AnimatedTestimonials = ({
                     y: 0,
                   }}
                   transition={{
-                    duration: 0.2,
-                    ease: "easeInOut",
+                    duration: 0.4,
+                    ease: "linear",
                     delay: 0.02 * index,
                   }}
                   className="inline-block"
@@ -147,13 +149,13 @@ export const AnimatedTestimonials = ({
           <div className="flex gap-4 pt-5 md:pt-0">
             <button
               onClick={handlePrev}
-              className="group/button flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
+              className="group/button flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
             >
               <IconArrowLeft className="h-5 w-5 text-black transition-transform duration-300 group-hover/button:rotate-12 dark:text-neutral-400" />
             </button>
             <button
               onClick={handleNext}
-              className="group/button flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
+              className="group/button flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
             >
               <IconArrowRight className="h-5 w-5 text-black transition-transform duration-300 group-hover/button:-rotate-12 dark:text-neutral-400" />
             </button>

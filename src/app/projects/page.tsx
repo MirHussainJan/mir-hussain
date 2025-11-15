@@ -40,7 +40,7 @@ const page = () => {
         <div className="scale-150 overflow-hidden w-full">
           <ContributionGraph
             username="MirHussainJan"
-            token={process.env.NEXT_PUBLIC_GITHUB_TOKEN}
+            token={process.env.NEXT_PUBLIC_GITHUB_TOKEN || ""}
           />
         </div>
       </main>
